@@ -12,3 +12,5 @@ The library uses string to represent integers. Here is the a list of the functio
 7) string divide(string b, string a): return the integral part of b/a.
 8) string mod(string a, string b): return b modulo a
 9) string power(string a, string e): return a to the power of e
+
+Note that the library does not support negative integers except with "absol" function. I will try to add this feature as soon as possible.
