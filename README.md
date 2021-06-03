@@ -1,7 +1,7 @@
 # Super_Integer
 
 This library provides a solution for the limited space for storing integers in C++.
-The library uses string to represent integers. Here is the a list of the functions included:
+The library uses string to represent integers. It does the same function of the Big Integer Library. Here is the a list of the functions included:
 
 1) string absol(string a): this one returns the absolute value of a 
 2) bool isbigger(string a, string b): returns true if a is bigger than b, and false otherwise.
