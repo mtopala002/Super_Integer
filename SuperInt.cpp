@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string>
 using namespace std;
-string cz(string s){
+string deleteLeadingZeros(string s){
     if(s.length()>1){
          while(s[0]=='0'){
           
@@ -30,7 +30,7 @@ bool isbigger(string a, string b){
 	else if (a.length()<b.length()){
 		return false;
 	}
-	else{
+
 		for (int i = 0; i<a.length(); i++){
 			if (a[i]>b[i]){
 				return true;
@@ -39,7 +39,14 @@ bool isbigger(string a, string b){
 				return false;
 			}
 		}
-	}
+
+
+
+		return false;
+	
+
+
+ 
 }
 
 bool isequal(string a, string b){
@@ -267,9 +274,9 @@ string divide(string b, string a){
 	int i = 0;
 while(down>0){
     
-    s = cz(s);
+    s = deleteLeadingZeros(s);
 	s.insert(s.length(), to_string(b[i] - '0'));
-	 s = cz(s);
+	 s = deleteLeadingZeros(s);
 	down--;
 	i++;
 	
@@ -278,7 +285,7 @@ while(down>0){
 		if (i != b.length()){
 		    
 			s.insert(s.length(), to_string(b[i] - '0'));
-			 s = cz(s);
+			 s = deleteLeadingZeros(s);
 			down--;
 			quotient.insert(quotient.length(),"0");
 
@@ -287,7 +294,7 @@ while(down>0){
 		}
 		else if (i == b.length()){
 		    quotient.insert(quotient.length(),"0");
-			return cz(quotient);
+			return deleteLeadingZeros(quotient);
 		}
 
 
@@ -314,7 +321,7 @@ while(down>0){
 
 
 			s = subtract(s, product(a, to_string(j)));
-			s = cz(s);
+			s = deleteLeadingZeros(s);
 
 			break;
 		}
@@ -334,32 +341,51 @@ while(down>0){
 }
 
         
-		return  cz(quotient);
+		return  deleteLeadingZeros(quotient);
 	
 	
 
 }
 
 string mod(string a, string b){
-    return subtract(b,product(a,divide(b,a)));
+
+    return subtract(a,product(b,divide(a,b)));
 }
 
+
+/** Binary Exponentiation **/
 string power(string a, string e){
-    string power=a;
-    while(isbigger(subtract(e,"0"),"1")){
-       power = product(a,power);
-        e = subtract(e,"1");
-    }
-    return power;
+
+
+	string result = "1";
+
+	while(e != "0" && e.length() > 0){
+		if(mod(e, "2") == "1"){
+			result = product(result, a);
+		}
+
+
+		a = product(a, a);
+
+	
+
+		e = divide(e, "2");
+	}
+
+	return result;
+
 }
 
 int main(){
-    string b = "1476512132186451651654654564891131238987561589476";
-   string a = "12453216845186456156489456153131310";
+    string b = "2454654564564";
+   string a = "51";
  
+
+
+
     
 
-	cout <<divide(b,a);
+	cout <<power(b,a);
 
 	return 0;
 }
